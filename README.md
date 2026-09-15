@@ -49,5 +49,18 @@ This opens the app in your browser, where you can paste a message and click **Pr
 
 - `main.ipynb` — data cleaning, EDA, and model training/selection
 - `main.py` — Streamlit app that loads the trained model and serves predictions
-- `spam.csv` — the SMS spam dataset used for training
+- `spam.csv` — the [SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection) dataset used for training
 - `vectorizer.pkl` / `model.pkl` — the fitted TF-IDF vectorizer and classifier used by the app
+
+---
+
+## 📊 Model Performance
+
+Of the models compared in `main.ipynb` (Naive Bayes variants, Logistic Regression, SVM, tree/ensemble methods, and a voting/stacking ensemble), TF-IDF + Multinomial Naive Bayes was picked as the final model for its strong precision — important for a spam filter, where flagging a real message as spam is worse than letting an occasional spam message through. On a held-out 20% test split:
+
+| Metric    | Score |
+|-----------|-------|
+| Accuracy  | 97.1% |
+| Precision | 100%  |
+
+To retrain the model on a different dataset or tune it further, rerun `main.ipynb` end to end — the last cell saves the fitted vectorizer and model back out to `vectorizer.pkl` / `model.pkl`.
